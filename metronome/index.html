@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+ 
+<head>
+    <meta charset="UTF-8">
+    <title>메트로놈</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            user-select: none; /* 텍스트 선택 방지 */
+        }
+        #metronome { 
+            max-width: 220px; /* 컨테이너 너비 축소 */
+            margin: 0 auto; 
+            padding: 15px;
+        }
+        .control-group {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            gap: 8px;
+        }
+        input[type="number"] {
+            width: 50px;
+            text-align: center;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin: 8px 0;
+            cursor: pointer; /* 슬라이더 커서 스타일 */
+        }
+        select {
+            width: 100px;
+        }
+        button {
+            padding: 4px 8px;
+            cursor: pointer;
+        }
+        /* 드래그 가능하도록 설정 */
+        input[type="range"],
+        input[type="number"],
+        select,
+        button {
+            user-select: auto;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="metronome">
+        <h1>메트로놈</h1>
+        <div>
+            <button id="bpmMinus">-</button>
+            <input type="number" id="bpmInput" min="30" max="500" value="60">
+            <button id="bpmPlus">+</button>        
+            <br>
+            <input type="range" id="bpmSlider" min="30" max="250" value="60" step="1">
+            <br>
+            <label for="bpmSlider">BPM: <span id="bpmValue">60</span></label>
+            <button id="startStop">시작</button>  
+        </div>
+        <div>
+            <label for="patternType">패턴 타입:</label>
+            <select id="patternType">
+                <option value="single">한 가지 소리</option>
+                <option value="twoSounds">두 가지 소리 반복</option>
+                <option value="nRepeat">N회 반복</option>
+            </select>
+        </div>
+        <div id="patternLengthContainer">
+            <label for="patternLength">패턴 길이:</label>
+            <input type="number" id="patternLength" value="30" min="1">
+        </div>
+    </div>
+    <script src="metronome.js"></script>
+</body>
+</html>
